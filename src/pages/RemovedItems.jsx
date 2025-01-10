@@ -6,11 +6,11 @@ const RemovedItems = () => {
     const dispatch = useDispatch();
     const removedItems = useSelector((state) => state.removedItems)
 
-    const removedTotalItems = removedItems.length;
+    const removedTotalItems = removedItems.reduce((acc, curr) => acc + curr.itemQuantity , 0)
 
     useEffect(() => {
         dispatch(fetchRemovedItems())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>

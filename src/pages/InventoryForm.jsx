@@ -11,7 +11,7 @@ const InventoryForm = () => {
   const handleAddItem = (e) => {
     e.preventDefault();
 
-    console.log('Current entryType:', entryType);
+    // console.log('Current entryType:', entryType);
     
     if (!itemName || !itemQuantity || !entryType) {
       alert('Please fill in all fields');
@@ -30,7 +30,6 @@ const InventoryForm = () => {
       dispatch(removedItems({itemName, itemQuantity: quantity, entryType}))
     }
     
-    // Reset form
     setItemName('');
     setItemQuantity('');
     setEntryType('addToStorage');

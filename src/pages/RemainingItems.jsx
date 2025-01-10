@@ -8,18 +8,15 @@ const RemainingItems = () => {
     const inventory = useSelector((state) => state.inventory)
     const removedItems = useSelector((state) => state.removedItems)
 
-    const totalItems = inventory.length;
-    const removedTotalItems = removedItems.length;
+    const totalItems = inventory.reduce((acc, curr) => acc + curr.itemQuantity , 0)
+    const removedTotalItems = removedItems.reduce((acc, curr) => acc + curr.itemQuantity , 0)
 
     const remainingTotalItems = totalItems - removedTotalItems;
 
     useEffect(() => {
-        dispatch(fetchAddedItems())
-    }, [])
-
-    useEffect(() => {
+        dispatch(fetchAddedItems());
         dispatch(fetchRemovedItems())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>

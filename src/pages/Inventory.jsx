@@ -6,11 +6,11 @@ const Inventory = () => {
     const dispatch = useDispatch();
     const inventory = useSelector((state) => state.inventory)
 
-    const totalItems = inventory.length;
+    const totalItems = inventory.reduce((acc, curr) => acc + curr.itemQuantity , 0);
 
     useEffect(() => {
         dispatch(fetchAddedItems())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
